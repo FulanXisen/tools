@@ -4,7 +4,7 @@ lazygit/*
 lsp/*
 node/*
 nvim/*
-sys/*
+sys/./*
 
 *__pycache__*
 
