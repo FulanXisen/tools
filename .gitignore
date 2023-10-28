@@ -1,11 +1,11 @@
-*__pycache__*
 arm-gnu-toolchain-arm-none-eabi/*
 emqx/*
 lazygit/*
-lsp/clangd/*
-lsp/pyright/*
+lsp/*
 node/*
 nvim/*
+sys/*
 
-sys/fzf/*
+*__pycache__*
 
+!*__info__*
