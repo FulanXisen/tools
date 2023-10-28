@@ -1,0 +1,25 @@
+- name: nvim
+- name: node
+- name: npm
+- name: eza
+- name: lazygit
+- name: pyright
+- name: clangd
+  desc: LSP server for c,cpp
+  install:
+    - linux:
+      method: APT
+      command:  
+      relocated: 
+    - macos:
+- name: bat
+  desc: ls alternative
+  install:
+    - linux:
+	method: Git
+        command: 
+	relocated: 
+    - macos:
+	method: Git
+	command:
+	relocated:
