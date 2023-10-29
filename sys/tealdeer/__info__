@@ -1,0 +1,10 @@
+#! /bin/bash
+api=dbrgn/tealdeer
+latest=$(curl -s "https://api.github.com/repos/${api}/releases/latest")
+
+if [[ -z "${latest}" ]]; then
+		echo "Error: Could not get release info"
+    exit 1
+fi 
+
+echo -e $(jq -r ".assets | .[] | \"\\\033[0;32m\" + .name + \"\\\033[m\" + \"\\\n\" + \"\\\033[0;36m\" + .browser_download_url + \"\\\033[m\" | . + \"\\\n\\\n\"" <<< "$latest")
