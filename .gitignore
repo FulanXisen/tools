@@ -1,4 +1,4 @@
-arm-gnu-toolchain-arm-none-eabi/*
+gnu-arm-none-eabi/*
 emqx/*
 lazygit/*
 lsp/*
