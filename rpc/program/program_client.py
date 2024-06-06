@@ -20,18 +20,46 @@ import logging
 import grpc
 import program_pb2
 import program_pb2_grpc
+import argparse
 
+def parse_args():
+    """Parses and returns command line arguments."""
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument(
+        '--bootloader',
+        action='store_true',
+        type=str,
+        default="",
+        help='Build without refresh makefile')
+
+    parser.add_argument(
+        '--clean',
+        action='store_true',
+        default=False,
+        help='Clean before Build')
+
+    parser.add_argument(
+        '--debug',
+        action='store_true',
+        default=False,
+        help='Build debuggable')
+
+    parser.add_argument(
+        '--bear',
+        action='store_true',
+        default=False,
+        help='Build Bear\'s Compiler Database')
 
 def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
-    print("Will try to greet world ...")
     with grpc.insecure_channel("localhost:50051") as channel:
         stub = program_pb2_grpc.ProgrammerStub(channel)
         response = stub.SayHello(program_pb2.HelloRequest(name="you"))
         print("Greeter client received: " + response.message)
-        response = stub.Program(program_pb2.ProgramRequest(ota_name="you", app_name="cmake ../"))
+        response = stub.Program(program_pb2.ProgramRequest(ota_name="CC-OtaBootloader_1.1.hex", app_name="cmake ../"))
         for reply in response:
             print(reply.message, end="")
 
